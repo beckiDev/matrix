@@ -1,0 +1,49 @@
+/* General style */
+button {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  margin: 0 auto;
+  font-size: 20px;
+  padding-top: 100px;
+}
+
+.errorMsg {
+  width: 400px;
+  background-color: pink;
+  color: red;
+}
+
+/* Container style */
+.App {
+  font-size: 16px;
+}
+
+/* Table Style */
+
+/* Single Item Style */
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+table {
+
+  max-width: 800px;
+  max-height: 800px;
+    border: 1px solid lightGray;
+  overflow-y:scroll;
+  display:block;
+}
+/* tbody{
+  overflow-x:scroll;
+  display:block;
+} */
+td.col {
+  resize: horizontal;
+  overflow:auto;
+  background-color: lightBlue;
+}
