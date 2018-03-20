@@ -1,6 +1,31 @@
 import React from 'react';
+
+//import {rightClick} from './helper-components/displayText';
 //import { Link, Route } from 'react-router-dom'
-// import TableEvent from './TableEvent.js';
+
+let rightClickTarget = '';
+
+const handleItemClick = (e) =>{
+
+  let contextMenu = document.getElementById('contextMenu');
+  const getColumnClass= rightClickTarget.getAttribute("class").split(' ').pop();
+  const col = document.getElementsByClassName(getColumnClass);
+  console.log(col)
+  for(let item of col){
+     item.classList.add("sticky");
+  }
+  contextMenu.style.display = 'none';
+}
+
+const openMenu = (e) => {
+  e.preventDefault();
+  let contextMenu = document.getElementById('contextMenu');
+  contextMenu.style.display = 'block';
+  contextMenu.style.left = e.clientX + 'px';
+  contextMenu.style.top = e.clientY + 'px';
+  rightClickTarget = e.target;
+}
+
 
 const Table = (props) => {
   const renderRows = (events, renderPlace) => {
@@ -22,7 +47,7 @@ const Table = (props) => {
         return (<tr className="MultiGrid">
           {
             allRowTitles.map((item, index) => {
-              return <td className="col" key={index}>{item}</td>
+              return <th className={`col col${index}`} onContextMenu={openMenu} key={index}>{item}</th>
             })
           }
         </tr>)
@@ -34,10 +59,10 @@ const Table = (props) => {
     }
     for (let i = 0; i < events.length; i++) {
       return (rowEvents.map((rowItem, j) => {
-        return (<tr key={j}>
+        return (<tr className="tableRow" key={j}>
           {
             rowItem.map((columnItem, i) => {
-              return <td key={i}>{columnItem}</td>
+              return <td className={`col${i}`} key={i}>{columnItem}</td>
             })
           }
         </tr>)
@@ -47,16 +72,25 @@ const Table = (props) => {
 
   if (props.events.length !== 0) {
     const {events} = props;
-    return (<div>
-      <table className="container">
-        <thead>
-          {renderRows(events, 'th')}
-        </thead>
-        <tbody>
-          {renderRows(events, 'tb')}
-        </tbody>
-      </table>
-    </div>)
+    return (
+      <div>
+      <div id="contextMenu" className="contextMenu">
+        <ul>
+          <li onClick={handleItemClick}>Freeze column</li>
+        </ul>
+      </div>
+      <div>
+        <table className="container">
+          <thead>
+            {renderRows(events, 'th')}
+          </thead>
+          <tbody>
+            {renderRows(events, 'tb')}
+          </tbody>
+        </table>
+        </div>
+    </div>
+  )
   } else
     return 'Loading...'
 }

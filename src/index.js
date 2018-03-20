@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = configureStore();
+export const store = configureStore();
 
 ReactDOM.render(
   <BrowserRouter>

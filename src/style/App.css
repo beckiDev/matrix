@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|IBM+Plex+Serif|Open+Sans');
 /* General style */
 button {
   width: 200px;
@@ -7,7 +8,6 @@ button {
   color: white;
   margin: 0 auto;
   font-size: 20px;
-  padding-top: 100px;
 }
 
 .errorMsg {
@@ -19,6 +19,9 @@ button {
 /* Container style */
 .App {
   font-size: 16px;
+  font-family: 'Bungee Inline', cursive;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'IBM Plex Serif', serif;
 }
 
 /* Table Style */
@@ -27,23 +30,56 @@ button {
 
 .sticky {
   position: fixed;
-  top: 0;
-  width: 100%;
+  background: transparent;
+  z-index: 1;
 }
-table {
 
-  max-width: 800px;
-  max-height: 800px;
-    border: 1px solid lightGray;
-  overflow-y:scroll;
-  display:block;
+table {
+  max-width: 1200px;
+  max-height: 1200px;
+  border: 1px solid lightGray;
+  overflow-y: scroll;
+  display: block;
+  margin: 20px;
+  background-color: white;
 }
-/* tbody{
-  overflow-x:scroll;
-  display:block;
-} */
-td.col {
-  resize: horizontal;
-  overflow:auto;
-  background-color: lightBlue;
+
+th.sticky td.sticky {
+  position: relative;
+  left: 30px;
+}
+th.col:hover{
+  cursor: context-menu;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-right: 1px solid lightGray;
+    border-bottom: 1px solid lightGray;
+    text-align: center;
+}
+
+tr.tableRow:hover{
+  background-color: lightGray;
+}
+.contextMenu {
+  width: 150px;
+  text-align: center;
+  height: auto;
+  box-shadow: 0 0 20px 0;
+  position: absolute;
+  display: none;
+  background-color: white;
+  border-radius: 4px;
+}
+.contextMenu ul {
+  list-style: none;
+  padding: 5px 0 5px 0;
+}
+
+.contextMenu ul li{
+  padding: 10px 5px 10px 5px;
+  border-left: 1px solid transparent;
+  cursor: pointer;
 }
